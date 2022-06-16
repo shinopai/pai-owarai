@@ -1,0 +1,69 @@
+<% render partial: 'shared/page_title', locals: { page_title: @stage.title } %>
+
+<header>
+  <%= render partial: 'shared/header' %>
+</header>
+
+<div class="block p-6 rounded-lg shadow-lg bg-white w-[80%] max-w-[1200px] mx-auto">
+<div class="text-center">
+  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="overflow-hidden">
+        <table class="min-w-full">
+          <tbody>
+            <tr class="border-b">
+              <th class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">ライブタイトル</th>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <%= @stage.title %>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <th class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">ライブ日付</th>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <%= l(@stage.performance_date) + put_wday(@stage.performance_date.wday) %>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <th class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">時間</th>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <%= l @stage.starting_time %><span class="text-3xl" style="vertical-align: sub;">~</span><%= l @stage.closing_time %>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <th class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">会場</th>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <%= @stage.venue %>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <th class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">料金</th>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <%= number_to_currency(@stage.price) %>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <th class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">ライブ主催者</th>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <%= @comedian.stage_name %>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <th class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">コメント</th>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <%= @stage.comment %>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <th class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">関連ジャンル</th>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <%= @comedian.genre.name %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+  <%= link_to '戻る', root_path %>
+</div>

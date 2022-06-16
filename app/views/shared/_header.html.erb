@@ -1,0 +1,18 @@
+<nav class="relative w-full flex items-center justify-between py-4 bg-my-yellow text-my-red hover:text-gray-700 focus:text-gray-700 shadow-lg">
+  <div class="container-fluid flex flex-wrap items-center justify-between px-6">
+    <div class="container-fluid">
+    <%= link_to root_path, class: 'flex items-center hover:text-gray-900 focus:text-gray-900 mt-2 lg:mt-0 mr-1' do %>
+      <%= image_tag 'header-logo.jpg', class: 'mr-2', style: 'height: 55px', alt: 'header-logo' %>
+        <span class="font-medium">PAIOWARAI</span>
+      <% end %>
+    </div>
+  </div>
+  <div class="pr-6">
+    <% if user_signed_in? %>
+    <%= link_to 'ログアウト', destroy_user_session_path, class: 'text-my-red hover:text-gray-900 mr-2' %>
+    <% else %>
+    <%= link_to '利用登録', new_user_registration_path, class: 'text-my-red hover:text-gray-900 mr-2' %>
+    <%= link_to 'ログイン', new_user_session_path, class: 'text-my-red hover:text-gray-900' %>
+    <% end %>
+  </div>
+</nav>

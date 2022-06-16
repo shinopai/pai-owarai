@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PaiOwarai</title>
+    <title><%= full_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application.tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+
+    <!-- google icons -->
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons', media: 'all' %>
   </head>
 
   <body>
-    <%= yield %>
+  <% if flash[:notice] %>
+    <p class="notice bg-green-100 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3 text-center"><%= notice %></p>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <p class="alert bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 mb-3 text-center"><%= alert %></p>
+  <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

@@ -1,0 +1,135 @@
+<% render partial: 'shared/page_title', locals: { page_title: 'ライブ登録' } %>
+
+<header>
+  <%= render partial: 'shared/header' %>
+</header>
+
+<div class="block p-6 rounded-lg shadow-lg bg-white w-[80%] max-w-[1200px] mx-auto">
+  <%= form_with model: @stage, url: user_stages_path(@user), local: true do |new_stage| %>
+  <% if @stage.errors.any? %>
+  <div id="error_explanation">
+    <ul class="text-my-red">
+      <% @stage.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="form-group mb-6">
+    <%= new_stage.label :title, 'ライブタイトル', class: 'form-label inline-block mb-2 text-gray-700' %><br />
+    <%= new_stage.text_field :title, autofocus: true, class: 'form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none', placeholder: 'ライブタイトルを入力' %>
+  </div>
+  <div class="form-group mb-6">
+    <%= new_stage.label :performance_date, 'ライブ日付', class: 'form-label inline-block mb-2 text-gray-700' %><br />
+    <%= new_stage.date_field :performance_date, autofocus: true, class: 'form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none resize-none' %>
+  </div>
+  <div class="form-group mb-6">
+    <%= label('', '時間', class: 'form-label inline-block mb-2 text-gray-700') %><br />
+    <%= new_stage.time_field :starting_time, class: 'ml-5' %>
+    <span class="text-3xl">~</span>
+        <%= new_stage.time_field :closing_time %>
+  </div>
+  <div class="form-group mb-6">
+    <%= new_stage.label :venue, '会場', class: 'form-label inline-block mb-2 text-gray-700' %><br />
+    <%= new_stage.text_field :venue, autofocus: true, class: 'form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none', placeholder: '会場名を入力(例)中野サンプラザなど' %>
+  </div>
+  <div class="form-group mb-6">
+    <%= new_stage.label :price, '料金', class: 'form-label inline-block mb-2 text-gray-700' %><br />
+    <%= new_stage.number_field :price, autofocus: true, class: 'form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none', placeholder: '料金を入力', min: 0 %>
+  </div>
+  <div class="form-group mb-6">
+    <%= new_stage.label :comment, 'コメント', class: 'form-label inline-block mb-2 text-gray-700' %><br />
+    <%= new_stage.text_area :comment, autofocus: true, class: 'form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none resize-none', rows: 5, placeholder: 'ライブの見どころや意気込みなど' %>
+  </div>
+  <%= new_stage.submit '登録する', class: 'w-full
+      px-6
+      py-2.5
+      bg-blue-600
+      text-white
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      rounded
+      shadow-md
+      hover:bg-blue-700 hover:shadow-lg
+      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+      active:bg-blue-800 active:shadow-lg
+      transition
+      duration-150
+      ease-in-out
+      cursor-pointer' %>
+  <% end %>
+  <%= link_to '戻る', root_path %>
+</div>

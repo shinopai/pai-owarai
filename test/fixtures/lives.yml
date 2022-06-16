@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  performance_date: 2022-06-15
+  starting_time: 2022-06-15 10:59:47
+  closing_time: 2022-06-15 10:59:47
+  venue: MyString
+  price: 1
+  comment: MyText
+  user: one
+
+two:
+  title: MyString
+  performance_date: 2022-06-15
+  starting_time: 2022-06-15 10:59:47
+  closing_time: 2022-06-15 10:59:47
+  venue: MyString
+  price: 1
+  comment: MyText
+  user: two

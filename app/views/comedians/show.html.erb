@@ -1,0 +1,40 @@
+<% render partial: 'shared/page_title', locals: { page_title: '芸人プロフィール' } %>
+
+<header>
+  <%= render partial: 'shared/header' %>
+</header>
+
+<h1 class="bg-white text-center p-2">芸人プロフィール</h1>
+
+<div class="bg-gray-300 py-10">
+  <div class="w-[70%] sp:w-[90%] mx-auto bg-gray-100 py-10 px-20 sp:px-10">
+    <div class="flex sp:block justify-center gap-5">
+      <div class="w-[40%] sp:w-full">
+        <% if @comedian.image.attached? %>
+          <%= image_tag @comedian.image, class: 'w-full sp:w-[70%] sp:mx-auto h-auto object-cover' %>
+        <% end %>
+      </div>
+      <div class="w-[60%] sp:w-full sp:text-center sp:mt-5">
+        <h2 class="text-2xl"><%= @comedian.stage_name %></h2>
+        <p class="mt-5"><%= @comedian.user.email %></p>
+        <p class="mt-5">ジャンル</p>
+        <p class="mb-5"><%= @comedian.genre.name %></p>
+        <%= link_to 'ライブ作成', new_user_stage_path(@comedian.user), class: 'py-2 px-4 border border-gray-800 rounded-lg inline-block' %>
+        <%= link_to '編集', edit_user_comedian_path(@comedian.user, @comedian), class: 'py-2 px-4 border border-gray-800 rounded-lg inline-block' %>
+        <%= button_to '削除', user_comedian_path(@comedian.user, @comedian), class: 'py-2 px-4 border border-gray-800 rounded-lg', method: :delete, data: { confirm: '本当に削除して宜しいですか？' } %>
+      </div>
+    </div>
+    <h3 class="bg-[#DEFFFE] text-center mt-10 text-lg">コメント</h3>
+    <p class="mt-5 text-center"><%= @comedian.comment %></p>
+    <h3 class="mt-10 text-center text-xl">出演予定のライブ</h3>
+  </div>
+  <div class="mt-5 mx-auto text-center">
+  <%= link_to '芸人一覧に戻る', comedians_path %>
+  </div>
+</div>
+
+<style>
+ .button_to{
+  display: inline-block;
+ }
+</style>

@@ -1,0 +1,109 @@
+<% render partial: 'shared/page_title', locals: { page_title: '利用登録' } %>
+
+<header>
+  <%= render partial: 'shared/header' %>
+</header>
+
+<div class="block p-6 rounded-lg shadow-lg bg-white w-[80%] max-w-[1200px] mx-auto">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |new_user| %>
+<%= render "devise/shared/error_messages", resource: resource %>
+<div class="form-group mb-6">
+  <%= new_user.label :name, '名前', class: 'form-label inline-block mb-2 text-gray-700' %><br />
+  <%= new_user.text_field :name, autofocus: true, class: 'form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' %>
+</div>
+<div class="form-group mb-6">
+  <%= new_user.label :email, 'メールアドレス', class: 'form-label inline-block mb-2 text-gray-700' %><br />
+  <%= new_user.email_field :email, autofocus: true, class: 'form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' %>
+</div>
+<div class="form-group mb-6">
+  <%= new_user.label :password, 'パスワード', class: 'form-label inline-block mb-2 text-gray-700' %><br />
+  <%= new_user.password_field :password, autofocus: true, class: 'form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' %>
+</div>
+<div class="form-group mb-6">
+  <%= new_user.label :password_confirmation, 'パスワード(確認)', class: 'form-label inline-block mb-2 text-gray-700' %><br />
+  <%= new_user.password_field :password_confirmation, autofocus: true, class: 'form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' %>
+</div>
+<div class="form-group mb-6">
+<%= new_user.check_box :is_comedian %>
+<%= new_user.label :is_comedian, 'お笑い芸人の方はチェックしてください' %>
+</div>
+<%= new_user.submit '登録する', class: 'w-full
+      px-6
+      py-2.5
+      bg-blue-600
+      text-white
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      rounded
+      shadow-md
+      hover:bg-blue-700 hover:shadow-lg
+      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+      active:bg-blue-800 active:shadow-lg
+      transition
+      duration-150
+      ease-in-out
+      cursor-pointer' %>
+<% end %>
+<p class="text-gray-800 mt-6 text-center">既に登録済みですか?
+  <%= link_to 'ログイン', new_user_session_path, class: 'text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out' %>
+</p>
+<%= link_to '戻る', root_path %>
+</div>
