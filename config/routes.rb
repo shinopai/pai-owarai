@@ -21,7 +21,11 @@ Rails.application.routes.draw do
 
   # stage
   resources :users do
-    resources :stages
+    resources :stages do
+      member do
+        post :join
+      end
+    end
   end
   get '/stages', to: 'stages#show_all', as: :stages
 

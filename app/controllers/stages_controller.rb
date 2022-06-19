@@ -1,6 +1,7 @@
 class StagesController < ApplicationController
     before_action :authenticate_user!
-    before_action :get_user, only: %i(new create show)
+    before_action :get_user, only: %i(new create show join)
+    before_action :get_comedian, only: %i(show join)
 
     def new
       @stage = @user.stages.build
@@ -26,8 +27,13 @@ class StagesController < ApplicationController
     end
 
     def show
-      @comedian = Comedian.where(user_id: params[:user_id]).first
       @stage = Stage.find(params[:id])
+    end
+
+    def join
+      stage = Stage.find(params[:id])
+      @comedian.stages << stage
+      redirect_to user_comedian_path(@user, @comedian), notice: stage.title + 'に参加しました'
     end
 
 
@@ -40,4 +46,7 @@ class StagesController < ApplicationController
       @user = User.find(params[:user_id])
     end
 
+    def get_comedian
+      @comedian = Comedian.where(user_id: params[:user_id]).first
+    end
 end

@@ -1,0 +1,25 @@
+<% render partial: 'shared/page_title', locals: { page_title: '芸人一覧' } %>
+
+<header>
+  <%= render partial: 'shared/header' %>
+</header>
+
+<div class="mt-10 mx-auto w-[80%]">
+  <h1 class="font-bold mb-5">芸人一覧(全<%= @comedians.size %>人)</h1>
+  <div class="flex items-center justify-start bg-indigo-50 p-4">
+    <% @comedians.each do | comedian | %>
+    <div class="w-1/3 overflow-hidden rounded-xl bg-white shadow-md hover:shadow-xl">
+    <% if comedian.image.attached? %>
+    <%= image_tag comedian.image, class: 'h-auto w-full' %>
+    <% else %>
+    <%= image_tag 'user.png', class: 'h-auto w-full' %>
+      <% end %>
+      <div class="p-5">
+        <h2 class="text-medium mb-5 text-gray-700"><%= comedian.stage_name %></h2>
+        <p class="text-medium mb-5 text-gray-700"><%= comedian.comment %></p>
+        <%= link_to '詳細ページ', user_comedian_path(comedian.user, comedian), class: "w-full block text-center rounded-md bg-indigo-600  py-2 text-indigo-100 hover:bg-indigo-500 hover:shadow-md duration-75" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  </div>

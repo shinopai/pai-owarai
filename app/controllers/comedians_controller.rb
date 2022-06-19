@@ -39,6 +39,12 @@ class ComediansController < ApplicationController
     end
   end
 
+  def show_all
+    @comedians = Comedian.all.order(created_at: :desc)
+
+    render :all
+  end
+
   # private
   def comedian_params
     params.require(:comedian).permit(:stage_name, :comment, :genre_id, :image)

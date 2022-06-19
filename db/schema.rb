@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_16_004951) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_19_051812) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -56,6 +56,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_004951) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "joins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "comedian_id", null: false
+    t.bigint "stage_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comedian_id"], name: "index_joins_on_comedian_id"
+    t.index ["stage_id"], name: "index_joins_on_stage_id"
+  end
+
   create_table "stages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
     t.date "performance_date", null: false
@@ -89,5 +98,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_004951) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comedians", "genres"
   add_foreign_key "comedians", "users"
+  add_foreign_key "joins", "comedians"
+  add_foreign_key "joins", "stages"
   add_foreign_key "stages", "users"
 end

@@ -26,10 +26,19 @@
     </div>
     <h3 class="bg-[#DEFFFE] text-center mt-10 text-lg">コメント</h3>
     <p class="mt-5 text-center"><%= @comedian.comment %></p>
-    <h3 class="mt-10 text-center text-xl">出演予定のライブ</h3>
+    <h3 class="mt-10 text-center text-xl">出演予定のライブ(<%= @comedian.joins.size %>件)</h3>
+    <ul class="text-center">
+      <% if @comedian.joins.any? %>
+      <% @comedian.joins.each do |join| %>
+      <li class="mt-5"><%= link_to join.stage.title, user_stage_path(@comedian.user.id ,join.stage), class: 'hover:underline' %></li>
+      <% end %>
+      <% else %>
+      <li class="mt-5">参加予定のライブはありません</li>
+      <% end %>
+    </ul>
   </div>
   <div class="mt-5 mx-auto text-center">
-  <%= link_to '芸人一覧に戻る', comedians_path %>
+  <%= link_to '芸人一覧に戻る', comedians_path, class: 'hover:underline' %>
   </div>
 </div>
 

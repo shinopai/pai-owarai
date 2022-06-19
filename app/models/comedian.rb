@@ -11,4 +11,6 @@ class Comedian < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :genre
   has_one_attached :image
+  has_many :joins
+  has_many :stages, through: :joins
 end
